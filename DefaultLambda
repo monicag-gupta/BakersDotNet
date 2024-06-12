@@ -1,9 +1,14 @@
 using System;
-namespace Console12App1  {
-     class Program    {
-        static void Main(string[] args)     {
-            var addNumbers = (int x, int y = 1) => x + y;
+namespace Console12App1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var addNumbers = (int x = 12, int y = 1) => x + y;
+            Console.WriteLine(addNumbers()); // Output : 13
             Console.WriteLine(addNumbers(5)); // Output: 6
             Console.WriteLine(addNumbers(5, 5)); // Output: 10
         }
- }   }
+    }
+}
