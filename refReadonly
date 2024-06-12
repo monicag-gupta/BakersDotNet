@@ -4,11 +4,11 @@ namespace Console12App1
     class Emp { public int R { get; set; } }
     class Program
     {
-        static void fn1(in int x, int y, Emp emp,out int z, ref int p)
+        static void fn1(in int x, int y, Emp emp,out int z, ref int p, ref readonly int q)
         {
             //if x is in parameter, we cannot change it
             //x = 10; // not allowed
-            int q = x;
+            int s = x;
             //since y is a value type variable (int), so the change done
             //here is not reflected in the caller fn
             y = 10;
@@ -20,20 +20,33 @@ namespace Console12App1
             // ref variable has a value also, and the changes done here
             //is reflected in the caller fn also, even if p is of value type
             p = 10;
+            //ref readonly cannot be modified but can be reffered
+            int t = q;
+            //q = 10;
+
         }
         static void Main(string[] args)
         {
-            int x, y, z, p;
+            int x, y, z, p, q;
             Emp emp = new Emp();
             emp.R = 30;
             x = 30;
             y = 30;
             p = 30;
-            Console.WriteLine(" x: " + x+ " y:  " + y + " p: "  + p + " emp :" + emp.R );
-            fn1(in x, y, emp, out z, ref p);
+            q = 30;
+            Console.WriteLine(" x: " + x+ " y:  " + y + " p: "  + p + " emp :" + emp.R + " q: " + q);
+            fn1(in x, y, emp, out z, ref p, ref q);
             Console.WriteLine("Post fn1()");
-            Console.WriteLine(" x: " + x + " y:  " + y + " p: " + p + " emp :" + emp.R + " z: " + z);
+            Console.WriteLine(" x: " + x + " y:  " + y + " p: " + p + " emp :" + emp.R + " z: " + z + " q: " + q);
 
         }
     }
 }
+
+
+
+The reason for this, as it is in Microsoft’s Docs it’s for 
+“APIs which capture or return references from their parameters would like to 
+disallow rvalues and also enforce some indication at the callsite that a reference 
+is being captured. ref readonly parameters are ideal in such cases as they warn if 
+used with rvalues or without any annotation at the callsite.”.
