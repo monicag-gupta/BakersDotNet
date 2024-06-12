@@ -1,0 +1,17 @@
+using System;
+public class Employee(string firstName, string lastName, DateTime hireDate, decimal salary) 
+{
+    public string FirstName { get; init; } = firstName;
+    public string LastName { get; init; } = lastName;
+    public DateTime HireDate { get; init; } = hireDate;
+    public decimal Salary { get; init; } = salary;
+public override string? ToString() {
+        return "\nFirstName: " + FirstName + " LastName: " + LastName + " HireDate: " + HireDate + " Salary: " + Salary;
+    }
+}
+class Program {
+    static void Main(string[] args)     {
+        var employee = new Employee("John", "Doe", new DateTime(2024, 1, 1), 50000);
+        Console.WriteLine(employee);
+    }
+}
