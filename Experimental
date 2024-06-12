@@ -1,0 +1,20 @@
+using Console12App1;
+using System;
+using System.Diagnostics.CodeAnalysis;
+namespace Console12App1  {
+    [Experimental(diagnosticId: "Test001")]
+    public class ExperimentalAttributeDemo   {
+        [Experimental(diagnosticId: "Test002")]
+        public void Print()   {
+            Console.WriteLine("Hello Experimental Attribute");
+        }
+    }
+    class Program    {
+      static void Main(string[] args)     {
+#pragma warning disable Test001
+            ExperimentalAttributeDemo e = new ExperimentalAttributeDemo();
+#pragma warning disable Test002
+            e.Print(); // output : Hello Experimental Attribute
+#pragma warning restore Test001
+        }
+    }   }
