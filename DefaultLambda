@@ -6,6 +6,8 @@ namespace Console12App1
         static void Main(string[] args)
         {
             var addNumbers = (int x = 12, int y = 1) => x + y;
+            //Func<int, int, int> addNumbers = (int x=12, int y=1) => (x + y); //Not Aloowed as it makes the lambda return null values (not int)
+
             Console.WriteLine(addNumbers()); // Output : 13
             Console.WriteLine(addNumbers(5)); // Output: 6
             Console.WriteLine(addNumbers(5, 5)); // Output: 10
