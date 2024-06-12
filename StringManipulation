@@ -23,3 +23,74 @@ namespace ConApp1222
 }
 
 
+
+
+
+
+using System;
+using System.Diagnostics;
+using System.Xml.Linq;
+namespace ConApp1222
+{
+    class Program
+    {
+        public static void Main()
+        {
+            int temperature = 25;
+            string warm = "Warm", cold = "Cold";
+
+            string message = $"The weather is {(temperature > 20 ? warm : cold)}. " +
+                             $"The temperature is {temperature} degrees Celsius.";
+
+            Console.WriteLine(message); // Output: The weather is warm. The temperature is 25 degrees Celsius.
+        }
+    }
+}
+
+
+
+using System;
+using System.Diagnostics;
+using System.Xml.Linq;
+namespace ConApp1222
+{
+    class Program
+    {
+        public static void Main()
+        {
+            string? name = null;
+            int? age = 30;
+
+            string message = $"Hello, {name ?? "Guest"}! " +
+                             $"Your age is {age?.ToString() ?? "unknown"}.";
+
+            Console.WriteLine(message); // Output: Hello, Guest! Your age is 30.
+        }
+    }
+}
+
+
+
+
+using System;
+using System.Diagnostics;
+using System.Xml.Linq;
+namespace ConApp1222
+{
+    class Program
+    {
+        public static void Main()
+        {
+            string name = "Alice";
+            int age = 30;
+
+            string message = $"Hello, {name[..3]}! " +
+                             $"You are {age} years old.";
+
+            Console.WriteLine(message); // Output: Hello, Ali! You are 30 years old.
+        }
+    }
+}
+
+
+
