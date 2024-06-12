@@ -1,0 +1,25 @@
+using System;
+using System.Diagnostics;
+using System.Xml.Linq;
+namespace ConApp1222
+{
+    class Program
+    {
+        public static void Main()
+        {
+            string name = "Alice";
+            int age = 30;
+
+            // Old way
+            string oldMessage = $"Hello, {name}! You are {age} years old.";
+
+            // New way with format specifier
+            string newMessage = $"Hello, {name}! You are {age:D3} years old."; // D3 ensures age is at least three digits
+
+            Console.WriteLine(oldMessage); // Output: Hello, Alice! You are 30 years old.
+            Console.WriteLine(newMessage); // Output: Hello, Alice! You are 030 years old.
+        }
+    }
+}
+
+
