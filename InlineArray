@@ -1,0 +1,18 @@
+using System;
+namespace Console12App1  {
+    struct XY { public int X; public int Y;
+        public override string ToString() {  return "(" + X + ", " + Y + ")";  }
+    }
+    [System.Runtime.CompilerServices.InlineArray(4)] //Max-Size : 4
+    struct Point  { // Inline array for geometric operations
+        public XY xy { get; set; }
+    }
+    class Program    {
+        static void Main(string[] args)     {
+            XY xy1 = new XY { X = 2, Y = 3 }; XY xy2 = new XY { X = 5, Y = 7 };
+            Point p = new Point(); // Demonstrate geometric operations with inline array
+            p[0] = xy1; p[1] = xy2;
+            double distance = Math.Sqrt(Math.Pow(p[0].X - p[1].X, 2) + Math.Pow(p[0].Y - p[1].Y, 2));
+            Console.WriteLine($"Distance between points: {p[0]} and {p[1]} is {distance}");
+        }
+ }   }
