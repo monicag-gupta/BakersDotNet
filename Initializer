@@ -1,0 +1,22 @@
+using System;
+using System.Collections.Generic;
+namespace ConsoleApp1
+{
+    public class Emp
+    {
+        public string Name { get; set; }
+        public int EmpId { get; set; }
+        public override string ToString()
+        {
+            return "Emp Name: " + Name + " having Id : " + EmpId;
+        }
+    }
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            Emp emp= new Emp { Name="JohnDoe",EmpId=101};
+            Console.WriteLine(emp);
+        }
+    }
+}
