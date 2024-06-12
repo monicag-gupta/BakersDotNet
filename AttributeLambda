@@ -1,0 +1,22 @@
+using System;
+using System.Diagnostics;
+using System.Xml.Linq;
+namespace ConApp1222 {
+    class Program   {
+        static void Main(string[] args)        {
+#if DEBUG
+            // Lambda with a Conditional attribute
+            Action logDebug =  () =>  Console.WriteLine("This is a debug message.");
+            logDebug();
+#endif
+            // Lambda with a custom attribute
+            Action logCustom = [MyCustom] () =>  Console.WriteLine("This is a custom attributed lambda.");
+            logCustom();
+        }
+        // Custom attribute definition
+        [AttributeUsage(AttributeTargets.Method | AttributeTargets.Delegate)]
+        public class MyCustomAttribute : Attribute   {    }
+    }
+}
+// This is a debug message.
+// This is a custom attributed lambda.
