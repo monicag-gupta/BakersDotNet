@@ -1,0 +1,20 @@
+Collection literals provide a shorthand way to initialize collections, making the code more readable and reducing the amount of boilerplate code.
+In C# 12, collection literals are introduced as a language feature, allowing you to initialize certain types of collections using a concise syntax directly in your code. This feature enhances readability and reduces verbosity when initializing collections.
+Types of Collection Literals
+Lists (List<T>):
+Example: List<int> numbers = [1, 2, 3, 4, 5];
+Immutable Lists (ImmutableList<T> from System.Collections.Immutable):
+Example: ImmutableList<int> numbers = [1, 2, 3, 4, 5].ToImmutableList();
+Arrays:
+Example: int[] numbers = [1, 2, 3, 4, 5];
+Sets (HashSet<T>):
+Example: HashSet<int> numbers = {1, 2, 3, 4, 5};
+Immutable Sets (ImmutableHashSet<T> from System.Collections.Immutable):
+Example: ImmutableHashSet<int> numbers = {1, 2, 3, 4, 5}.ToImmutableHashSet();
+Dictionaries (Dictionary<TKey, TValue>):
+Example: Dictionary<string, int> ages = {"Alice" => 30, "Bob" => 25, "Charlie" => 35};
+Immutable Dictionaries (ImmutableDictionary<TKey, TValue> from System.Collections.Immutable):
+Example: ImmutableDictionary<string, int> ages = {"Alice" => 30, "Bob" => 25, "Charlie" => 35}.ToImmutableDictionary();
+
+
+
