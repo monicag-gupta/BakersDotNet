@@ -1,0 +1,5 @@
+Create a new Project in VS 2022 with template: ASP.NET Core Web API
+Add OpenAPI : Microsoft.AspNetCore.OpenApi from NuGet packages
+For Minimal API, we need to configure services and middleware to support Minimal APIs. So Edit Program.cs
+Run the Application in IIS Express
+
