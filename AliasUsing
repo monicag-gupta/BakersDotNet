@@ -1,0 +1,17 @@
+using System;
+using Person = System.Collections.Generic.Dictionary<string, object>;
+using Point = (int x, int y);
+namespace Console12App1  {
+     class Program    {
+         static void Main(string[] args)     {
+            // System.Collections.Generic.Dictionary<string, object> p = new System.Collections.Generic.Dictionary<string, object>();
+            Person p = new Person();
+            p["Name"] = "John Doe";
+            p["Age"] = 25;
+            Console.WriteLine(p["Name"] + " is of age " + p["Age"]);// John Doe is of age 25
+            // (int x, int y) pt = (1, 2);
+            Point pt = (1, 2);
+            Console.WriteLine(pt.x); // 1
+            Console.WriteLine(pt.y); // 2
+        }
+ }   }
