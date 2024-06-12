@@ -1,0 +1,26 @@
+using System;
+namespace ConApp1222 {
+    class Program   {
+        static void Main(string[] args)        {
+            // Lambda with explicit return type for addition
+            Func<int, int, int> add = (int x, int y) => (x + y);
+            int additionResult = add(3, 4);
+            Console.WriteLine($"Addition Result: {additionResult}");
+            // Lambda with explicit return type for multiplication
+            Func<int, int, int> multiply = (int x, int y) => (x * y);
+            int multiplicationResult = multiply(3, 4);
+            Console.WriteLine($"Multiplication Result: {multiplicationResult}");
+            // Lambda with explicit return type for determining if a number is even
+            Func<int, bool> isEven = (int number) => (number % 2 == 0);
+            bool isEvenResult = isEven(4);
+            Console.WriteLine($"Is 4 even? {isEvenResult}");
+            // Lambda with explicit return type for a more complex calculation
+            Func<double, double, double> complexCalculation = (double a, double b) =>  {
+                double result = Math.Pow(a, b) + Math.Sqrt(a * b);
+                return result;
+            };
+            double complexResult = complexCalculation(3.0, 4.0);
+            Console.WriteLine($"Complex Calculation Result: {complexResult}");
+        }
+    }
+}
