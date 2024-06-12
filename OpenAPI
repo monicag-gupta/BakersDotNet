@@ -3,3 +3,40 @@ Add OpenAPI : Microsoft.AspNetCore.OpenApi from NuGet packages
 For Minimal API, we need to configure services and middleware to support Minimal APIs. So Edit Program.cs
 Run the Application in IIS Express
 
+
+
+
+
+var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddEndpointsApiExplorer();// Add services to the container.
+builder.Services.AddSwaggerGen();
+var app = builder.Build();
+if (app.Environment.IsDevelopment()) {  // Configure the HTTP request pipeline.
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
+app.UseHttpsRedirection();
+app.MapGet("/", () => "Hello World!");
+app.MapGet("/products/{id}", (int id) =>
+{ return Results.Ok(new { Id = id, Name = "Sample Product", Price = 100 }); })
+.WithName("GetProduct")
+.WithOpenApi(); // Generates OpenAPI documentation
+app.MapPost("/products", (Product product) => // Process the product
+{return Results.Created($"/products/{product.Id}", product);})
+.WithName("CreateProduct")
+.WithOpenApi(); // Generates OpenAPI documentation
+app.MapPut("/products/{id}", (int id, Product updatedProduct) => // Update the product with the given ID
+{ return Results.NoContent(); })
+.WithName("UpdateProduct")
+.WithOpenApi(); // Generates OpenAPI documentation
+app.MapDelete("/products/{id}", (int id) =>   // Delete the product with the given ID
+{ return Results.NoContent();})
+.WithName("DeleteProduct")
+.WithOpenApi(); // Generates OpenAPI documentation
+app.Run();
+record Product(int Id, string Name, decimal Price);
+
+
+
+
+
