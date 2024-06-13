@@ -181,4 +181,17 @@ This is going to add a folder named Migration in the Project with InitialCreate.
 Add-Migration InitialCreate
 
 
+Then type :
+Update-Database
+
+This command is responsible to create database table in SQL server
+
+
+
+
+
+
+
+
+
 
