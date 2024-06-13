@@ -132,7 +132,10 @@ app.MapPut("/products/{id}", (int id, Product updatedProduct) =>
     }
     else
     {
-        product = new Product(id,updatedProduct.Name,updatedProduct.Price);
+        //product = new Product(id, updatedProduct.Name, updatedProduct.Price);
+        product.Name = updatedProduct.Name;
+        product.Price = updatedProduct.Price;
+        
     }
 
     return Results.NoContent();
@@ -157,7 +160,13 @@ app.MapDelete("/products/{id}", (int id) =>
 
 app.Run();
 
-public record Product(int Id, string Name, decimal Price);
+public class Product(int id, string name, decimal price)
+{
+    public int Id { get; set; } = id;
+    public string Name { get; set; } = name;
+    public decimal Price { get; set; } = price;
+}
+
 
 
 
