@@ -1,0 +1,9 @@
+Create a folder MyComp in Components folder
+Add a new Razor Component in the folder MyComp. Name it BtnComp.razor
+
+Edit Home.razor to add BtnComp component.
+We see that the output does not render the button click
+Now add @rendermode="InteractiveServer" to the BtnComp
+We can see that the button is interacting
+Next we can give the component page wise rendermode also by adding @rendermode="InteractiveServer" at BtnComp page rather than the Home page/ BtnComp component.
+
