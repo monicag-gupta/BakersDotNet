@@ -234,7 +234,7 @@ In NavMenu.razor, add:
     <ValidationSummary />
     <div class="form-group">
         <label>Id</label>
-        <InputText class="form-control" @bind-Value="product.Id" />
+        <InputNumber class="form-control" @bind-Value="product.Id" />
     </div>
 
     <div class="form-group">
@@ -278,4 +278,6 @@ In NavMenu.razor, add:
         NavigationManager.NavigateTo("/products");
     }
 }
+
+
 
