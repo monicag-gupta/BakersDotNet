@@ -238,6 +238,87 @@ Welcome @TempData["EmpName"] !!
 
 
 
+UpdateEmps.cshtml
+
+<h1>
+ @TempData["msg"] !!
+<br />
+<hr />
+<a href="/Employee/ListEmp">List of Emp line wise</a>
+<br />
+<a href="/Employee/Index">Back to Index</a>
+<br />
+</h1>
+
+
+
+
+
+
+
+
+DelEmps.cshtml
+
+<h1>
+@TempData["msg"] !!
+<br />
+<hr />
+<a href="/Employee/ListEmp">List of Emp line wise</a>
+<br />
+<a href="/Employee/Index">Back to Index</a>
+<br />
+</h1>
+
+
+
+
+
+AddEmps.cshtml
+
+<h1>
+    Employee Added Successfully!
+    <br />
+    <hr />
+    <a href="/Employee/ListEmp">List of Emp line wise</a>
+    <br />
+    <a href="/Employee/Index">Back to Index</a>
+
+
+
+
+</h1>
+
+
+
+
+
+
+ListEmp.cshtml
+
+@model IEnumerable<Day30MVC.Models.Employee>
+<h3>
+@foreach (var emp in Model)
+{
+    <div>
+        @emp
+        <hr />
+    </div>
+}
+
+<hr />
+<br />
+<hr />
+<a href="/Employee/ListEmp">List of Emp line wise</a>
+<br />
+<a href="/Employee/Index">Back to Index</a>
+<br />
+</h3>
+
+
+
+
+
+
 
 
 
