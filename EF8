@@ -1,0 +1,4 @@
+Install-Package Microsoft.EntityFrameworkCore.SqlServer 
+Install-Package Microsoft.EntityFrameworkCore.Tools
+Install-Package Swashbuckle.AspNetCore
+Install-Package Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore
