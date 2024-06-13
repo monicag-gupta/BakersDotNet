@@ -51,3 +51,9 @@ Models->Product.cs
 Services->ProductService.cs
 
 
+Create Razor Component in Pages folder:
+ProductForm.razor
+ProductList.razor
+
+
+
