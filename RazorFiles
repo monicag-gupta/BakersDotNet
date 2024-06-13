@@ -7,3 +7,20 @@ Now add @rendermode="InteractiveServer" to the BtnComp
 We can see that the button is interacting
 Next we can give the component page wise rendermode also by adding @rendermode="InteractiveServer" at BtnComp page rather than the Home page/ BtnComp component.
 
+
+
+BtnComp.razor:
+
+<h3>BtnComp</h3>
+
+<button @onclick="changeMsg">Click to see Message</button>
+<h2>@msg</h2>
+
+@code {
+    string msg="Old messages";
+    void changeMsg(){
+        msg = msg == "Old messages" ? "This is the new Message post click":"Old messages";
+    }
+
+}
+
