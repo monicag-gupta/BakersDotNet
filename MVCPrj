@@ -162,6 +162,74 @@ namespace WebApplication2.Controllers
 
 
 
+Generate Views:
+
+Views->Employee-> Index.cshtml
+
+<h1>
+<a href="/Employee/ListEmp">List of Emp line wise</a>
+<br />
+<a href="/Employee/ListEmp2">List of Emp as JSON</a>
+<Br /><hr />
+********For just a welcome to name screen*********
+<form action="/Employee/WelcomeEmp2">
+Name: <input type="text" name="name" />
+<input type="submit" value="WelcomeEmp2" />
+</form>
+<br />
+<hr />
+********For Search according to Name**********
+<form action="/Employee/WelcomeEmp">
+<!-- Name: Monica is a hidden field here.
+<input type="hidden" name="name1" value="Monica"/> -->
+Name: <input type="text" name="name" />
+<input type="submit" value="WelcomeEmp" />
+</form>
+
+<br />
+<hr />
+****For Update***
+<form action="/Employee/UpdateEmps">
+Id: <input type="text" name="id" /><br />
+Name: <input type="text" name="name" /><br />
+<input type="submit" value="UpdateEmp" />
+</form>
+
+
+<br />
+<hr />
+****For Adding a new Employee***
+<form action="/Employee/AddEmps">
+Id: <input type="text" name="id" /><br />
+Name: <input type="text" name="name" /><br />
+<input type="submit" value="AddEmp" />
+</form>
+<hr/>
+
+<br />
+<hr />
+****For Deleting an Employee***
+<form action="/Employee/DelEmps">
+Id: <input type="text" name="id" /><br />
+<input type="submit" value="DeleteEmp" />
+</form>
+<hr />
+***************End*************
+</h1>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
