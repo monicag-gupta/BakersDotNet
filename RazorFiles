@@ -57,3 +57,85 @@ ProductList.razor
 
 
 
+
+namespace BlazorApp1.Models
+{
+    public class Product
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public decimal Price { get; set; }
+    }
+
+}
+
+
+
+
+
+using BlazorApp1.Models;
+
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace BlazorApp1.Services
+{
+    public class ProductService
+    {
+        private List<Product> _products = new List<Product>
+        {
+            new Product { Id = 1, Name = "Product 1", Price = 10.0M },
+            new Product { Id = 2, Name = "Product 2", Price = 20.0M }
+        };
+
+        public Task<List<Product>> GetProductsAsync()
+        {
+            return Task.FromResult(_products);
+        }
+
+        public Task<Product> GetProductByIdAsync(int id)
+        {
+            return Task.FromResult(_products.FirstOrDefault(p => p.Id == id));
+        }
+
+        public Task AddProductAsync(Product product)
+        {
+            _products.Add(product);
+            return Task.CompletedTask;
+        }
+
+        public Task UpdateProductAsync(Product product)
+        {
+            var existingProduct = _products.FirstOrDefault(p => p.Id == product.Id);
+            if (existingProduct != null)
+            {
+                existingProduct.Name = product.Name;
+                existingProduct.Price = product.Price;
+            }
+            return Task.CompletedTask;
+        }
+
+        public Task DeleteProductAsync(int id)
+        {
+            var product = _products.FirstOrDefault(p => p.Id == id);
+            if (product != null)
+            {
+                _products.Remove(product);
+            }
+            return Task.CompletedTask;
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
