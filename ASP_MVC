@@ -88,3 +88,13 @@ namespace WebApplication3
     }
 }
 
+
+
+Generate secret.json:
+
+{
+  "JwtSettings": {
+    "SecretKey": "apples"
+  }
+}
+
