@@ -220,6 +220,36 @@ Id: <input type="text" name="id" /><br />
 
 
 
+WelcomeEmp.cshtml
+
+<h1>
+Welcome @TempData["Emp"] !!
+</h1>
+
+
+
+
+WelcomeEmp2.cshtml
+
+<h1>
+Welcome @TempData["EmpName"] !!
+</h1>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
