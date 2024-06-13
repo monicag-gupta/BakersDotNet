@@ -124,3 +124,36 @@ app.Run();
 }
 
 
+
+
+
+
+using Microsoft.EntityFrameworkCore;
+
+namespace WebApplication4.Models
+{
+    public class ProductService
+    {
+        private readonly AppDbContext _context;
+        public ProductService(AppDbContext context) { _context = context; }
+        // Bulk Updates and Deletes.     // EF Core 8 provides more efficient bulk operations.Here’s an example of how to perform bulk updates:
+        public async Task BulkUpdatePricesAsync()
+        {
+            var products = _context.Products.Where(p => p.Price < 10);
+            await products.ExecuteUpdateAsync(p => p.SetProperty(p => p.Price, p => p.Price + 1));
+        }
+        public async Task BulkDeleteProductsAsync()
+        {   // And for bulk deletes
+            var products = _context.Products.Where(p => p.Price < 10);
+            await products.ExecuteDeleteAsync();
+        }
+        // Improved LINQ Translations. // EF Core 8 improves the translation of complex LINQ queries to SQL, making it easier to write and maintain complex queries.
+        public async Task<List<Product>> GetProductsAsync()
+        {
+            var products = await _context.Products
+                .Where(p => p.Name.Contains("Ebook")).OrderBy(p => p.Price).ToListAsync();
+            return products;
+        }
+    }
+}
+
