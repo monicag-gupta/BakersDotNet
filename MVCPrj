@@ -339,17 +339,23 @@ ListEmp.cshtml
 WebApplication -> .csprj
 
 <Project Sdk="Microsoft.NET.Sdk.Web">
-	<PropertyGroup>
-		<OutputType>Exe</OutputType>
-		<ImplicitUsings>enable</ImplicitUsings>
-		<Nullable>enable</Nullable>
-		<TargetFramework>net8.0</TargetFramework>
-		<PublishAot>true</PublishAot>
-		<RuntimeIdentifier>win-x64</RuntimeIdentifier>
-		<!-- Change as per your target platform -->
-		<SelfContained>true</SelfContained>
-	</PropertyGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  
+	<OutputType>Exe</OutputType>
+   
+    <PublishAot>true</PublishAot>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier> <!-- Change as per your target platform -->
+	  
+    <SelfContained>true</SelfContained>
+  
+  </PropertyGroup>
+
 </Project>
+
 
 
 
