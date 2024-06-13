@@ -295,24 +295,26 @@ AddEmps.cshtml
 
 ListEmp.cshtml
 
-@model IEnumerable<Day30MVC.Models.Employee>
+@model IEnumerable<WebApplication2.Models.Employee>
 <h3>
-@foreach (var emp in Model)
-{
-    <div>
-        @emp
-        <hr />
-    </div>
-}
+    @foreach (var emp in Model)
+    {
+        <div>
+            @emp
+            <hr />
+        </div>
+    }
 
-<hr />
-<br />
-<hr />
-<a href="/Employee/ListEmp">List of Emp line wise</a>
-<br />
-<a href="/Employee/Index">Back to Index</a>
-<br />
+    <hr />
+    <br />
+    <hr />
+    <a href="/Employee/ListEmp">List of Emp line wise</a>
+    <br />
+    <a href="/Employee/Index">Back to Index</a>
+    <br />
 </h3>
+
+
 
 
 
