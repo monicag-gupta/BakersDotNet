@@ -33,3 +33,31 @@ namespace WebApplication4.Models
 
 }
 
+
+
+
+
+
+using Microsoft.EntityFrameworkCore;
+
+namespace WebApplication4.Models
+{
+    public class AppDbContext : DbContext
+    {
+        public DbSet<Product> Products { get; set; }
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //{
+        //    optionsBuilder.UseSqlServer("Data Source=DESKTOP-3833V1F;Initial Catalog=training;Integrated Security=True;TrustServerCertificate=True");
+        //}
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Product>()
+                .HasQueryFilter(p => !p.IsDeleted);
+            //modelBuilder.Entity<Product>()
+            //    .Property(p => p.JsonData)
+            //    .HasColumnType("json");
+        }
+    }
+
+
