@@ -175,5 +175,10 @@ Tools-> NuGet Package Manager->Package Manager Console
 
 
 
+Add migration tools with the name InitialCreate 
+This is going to add a folder named Migration in the Project with InitialCreate.cs file
+
+Add-Migration InitialCreate
+
 
 
