@@ -105,3 +105,63 @@ namespace WebApplication2.Models
 
 
 
+Controller: EmployeeController
+
+using Microsoft.AspNetCore.Mvc;
+using System.Xml.Linq;
+using WebApplication2.Models;
+
+namespace WebApplication2.Controllers
+{
+    public class EmployeeController : Controller
+    {
+        static EmployeeList emps = new EmployeeList();
+        public IActionResult Index()
+        {
+            return View();
+        }
+        public IActionResult WelcomeEmp(string name)
+        {
+            TempData["Emp"] = emps.getEmp(name);
+            return View();
+        }
+        public IActionResult WelcomeEmp2(string name)
+        {
+            TempData["EmpName"] = name;
+            return View();
+        }
+        public IActionResult UpdateEmps(int id, string name)
+        {
+            TempData["msg"] = emps.updateEmps(id, name);
+            return View();
+        }
+
+        public IActionResult DelEmps(int id)
+        {
+            TempData["msg"] = emps.delEmp(id);
+            return View();
+        }
+        public IActionResult AddEmps(int id, string name)
+        {
+            emps.AddEmp(name, id);
+            return View();
+        }
+        public IActionResult ListEmp()
+        {
+            return View(emps.emps);
+        }
+
+        public JsonResult ListEmp2()
+        {
+            return Json(emps.emps);
+        }
+
+    }
+}
+
+
+
+
+
+
+
