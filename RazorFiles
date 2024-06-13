@@ -132,6 +132,9 @@ namespace BlazorApp1.Services
 
 
 
+Add to Program.cs:
+
+builder.Services.AddScoped<ProductService>();
 
 
 
