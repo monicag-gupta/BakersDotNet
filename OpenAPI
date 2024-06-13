@@ -64,3 +64,108 @@ record Product(int Id, string Name, decimal Price);
 
 
 
+
+CRUD:
+
+var builder = WebApplication.CreateBuilder(args);
+
+// Add services to the container.
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
+var app = builder.Build();
+
+// Configure the HTTP request pipeline.
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
+
+app.UseHttpsRedirection();
+
+// In-memory product store
+var products = new List<Product>
+{
+    new Product(1, "Product 1", 100.00M),
+    new Product(2, "Product 2", 200.00M),
+    new Product(3, "Product 3", 300.00M)
+};
+
+// Get all products
+app.MapGet("/products", () =>
+{
+    return Results.Ok(products);
+})
+.WithName("GetAllProducts")
+.WithOpenApi();
+
+// Get product by ID
+app.MapGet("/products/{id}", (int id) =>
+{
+    var product = products.FirstOrDefault(p => p.Id == id);
+    if (product is null)
+    {
+        return Results.NotFound();
+    }
+    return Results.Ok(product);
+})
+.WithName("GetProductById")
+.WithOpenApi();
+
+// Create a new product
+app.MapPost("/products", (Product product) =>
+{
+    products.Add(product);
+    return Results.Created($"/products/{product.Id}", product);
+})
+.WithName("CreateProduct")
+.WithOpenApi();
+
+// Update an existing product
+app.MapPut("/products/{id}", (int id, Product updatedProduct) =>
+{
+    var product = products.FirstOrDefault(p => p.Id == id);
+    if (product is null)
+    {
+        return Results.NotFound();
+    }
+    else
+    {
+        product = new Product(id,updatedProduct.Name,updatedProduct.Price);
+    }
+
+    return Results.NoContent();
+})
+.WithName("UpdateProduct")
+.WithOpenApi();
+
+// Delete a product
+app.MapDelete("/products/{id}", (int id) =>
+{
+    var product = products.FirstOrDefault(p => p.Id == id);
+    if (product is null)
+    {
+        return Results.NotFound();
+    }
+
+    products.Remove(product);
+    return Results.NoContent();
+})
+.WithName("DeleteProduct")
+.WithOpenApi();
+
+app.Run();
+
+public record Product(int Id, string Name, decimal Price);
+
+
+
+
+
+
+
+
+
+
+
