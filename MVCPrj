@@ -1,0 +1,107 @@
+Model: Employee.cs
+
+
+namespace WebApplication2.Models
+{
+       public class Employee
+        {
+            public string name { get; set; }
+            public int id { get; set; }
+
+            public Employee(string name, int id)
+            {
+                this.name = name;
+                this.id = id;
+            }
+
+            public Employee() { }
+
+            public override string ToString()
+            {
+                return "\nEmp: " + name + " with id: " + id;
+            }
+        }
+    }
+
+
+
+
+Model : EmployeeList.cs
+
+
+using System.Collections.Generic;
+using System;
+using System.Xml.Linq;
+
+namespace WebApplication2.Models
+{
+   
+
+         public class EmployeeList
+        {
+            public List<Employee> emps = new List<Employee>();
+            public EmployeeList(List<Employee> emps) { this.emps = emps; }
+            public EmployeeList(Employee emp) { this.emps.Add(emp); }
+            public EmployeeList()
+            {
+                this.AddEmp(new Employee("abc", 101));
+                this.AddEmp(new Employee("xyz", 102));
+                this.AddEmp(new Employee("abcxyz", 103));
+            }
+            public void AddEmp(Employee emp) { this.emps.Add(emp); }
+            public void AddEmp(string name, int id) { this.emps.Add(new Employee(name, id)); }
+            public void DispEmp()
+            {
+                foreach (Employee e in emps)
+                {
+                    Console.WriteLine(e);
+                }
+            }
+
+            public Employee getEmp(string name)
+            {
+                Employee e = new Employee("default", 100);
+                foreach (Employee ee in emps)
+                {
+                    if (ee.name.Equals(name))
+                    {
+                        e = ee;
+                    }
+                }
+
+                //Employee e2 = emps.Find(ee => ee.name.Equals(name));
+                return e;
+            }
+            public string updateEmps(int id, string updatedName)
+            {
+
+                foreach (Employee ee in emps)
+                {
+                    if (ee.id == id)
+                    {
+                        ee.name = updatedName;
+                        return "The Employee has been updated successfully";
+                    }
+                }
+                return "The Employee with id: " + id + " not found";
+            }
+            public string delEmp(int id)
+            {
+                foreach (Employee ee in emps)
+                {
+                    if (ee.id == id)
+                    {
+                        emps.Remove(ee);
+                        return "The Employee has been removed successfully";
+                    }
+                }
+                return "The Employee with id: " + id + " not found";
+
+            }
+        }
+    }
+
+
+
+
+
