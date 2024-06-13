@@ -55,3 +55,36 @@ namespace WebApplication3
 }
 
 
+
+
+Program.cs
+
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Hosting;
+using System.Reflection.PortableExecutable;
+
+using WebApplication3;
+namespace WebApplication3
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            CreateHostBuilder(args).Build().Run();
+        }
+        public static IHostBuilder CreateHostBuilder(string[] args) =>
+              Host.CreateDefaultBuilder(args)
+                .ConfigureWebHostDefaults(webBuilder =>
+                {
+                    webBuilder.UseStartup<Startup>();
+                    webBuilder.UseKestrel(options =>
+                    {
+                        options.ListenAnyIP(5000, listenOptions =>
+                        {
+                            listenOptions.UseHttps("certificate.pfx", "apples");
+                        });
+                    });
+                });
+    }
+}
+
