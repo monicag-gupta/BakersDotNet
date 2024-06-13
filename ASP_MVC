@@ -3,3 +3,55 @@ Add through NuGet:
 Microsoft.AspNetCore.Authentication.JwtBearer
 Microsoft.IdentityModel.Tokens
 System.IdentityModel.Tokens.Jwt
+
+
+
+Startup.cs
+
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+namespace WebApplication3
+{
+    public class Startup
+    {
+        public Startup(IConfiguration configuration) { Configuration = configuration; }
+        public IConfiguration Configuration { get; }
+        public void ConfigureServices(IServiceCollection services)
+        {
+            var secretKey = Configuration["JwtSettings:SecretKey"];
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)     // Add authentication
+                    .AddJwtBearer(options => {
+                        options.TokenValidationParameters = new TokenValidationParameters
+                        {
+                            ValidateIssuer = true,
+                            ValidateAudience = true,
+                            ValidateLifetime = true,
+                            ValidateIssuerSigningKey = true,
+                            ValidIssuer = "https://localhost:5001", // Replace with your actual issuer URL
+                            ValidAudience = "your-api", // Replace with your actual audience
+                            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("apples"))
+                        };
+                    });
+            services.AddAuthorization(); // Add authorization            
+            services.AddControllersWithViews();// Other services
+        }
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        {
+            app.UseAuthentication(); // Other configurations
+            app.UseAuthorization();
+            app.UseRouting(); // Add this line
+            app.UseAuthentication(); // Add this line
+            app.UseAuthorization(); // Add this line            
+            app.UseEndpoints(endpoints =>  // Other middleware
+            {
+                endpoints.MapControllerRoute(
+                        name: "default",
+                        pattern: "{controller=Home}/{action=Index}/{id?}");
+            });
+        }
+    }
+}
+
+
