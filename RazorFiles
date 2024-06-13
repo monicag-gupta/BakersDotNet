@@ -43,3 +43,11 @@ Welcome to your new app.
 
 
 
+
+
+
+Create classes:
+Models->Product.cs
+Services->ProductService.cs
+
+
