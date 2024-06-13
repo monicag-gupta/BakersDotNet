@@ -24,3 +24,22 @@ BtnComp.razor:
 
 }
 
+
+
+
+
+Home.razor:
+
+@page "/"
+
+<PageTitle>Home</PageTitle>
+
+<h1>Hello, world!</h1>
+
+Welcome to your new app.
+
+<BtnComp @rendermode="InteractiveServer"/>
+
+
+
+
